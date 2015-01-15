@@ -44,7 +44,7 @@ class Markov:
                 self.backward[phrase] = [string[i]]
 
         if string[0] == string[0].capitalize():
-            self.start.append(string[0])        
+            self.start.append(string[0])
         self.end.append(string[-1]) #TODO: check punctuation
 
     def get_string(self, user = None, output = None):
@@ -73,7 +73,7 @@ class Markov:
 
             #print('In end:', output[-1] in self.end)
             #print('In begin:', output[0] in self.start)
-            
+
             count = 0
             #Add to the end first.
             while output[-1] not in self.end or count < 5:
@@ -103,7 +103,7 @@ class Markov:
                 return '{}: No valid markov chain.'.format(user)
             else:
                 return 'No valid markov chain.'
-        
+
     def convert(self, filename):
         import arcbot_util
         old = arcbot_util.load_markov(filename)
@@ -168,20 +168,20 @@ def wahooify():
             new_content[-1] = new_content[-1][:-1]
         content = new_content
         #content = [i for i in content.split('\n') if len(i) > 0]
-        
+
         f = open('wahoo.txt', 'w')
         for i in content:
             f.write(i)
             f.write('\n')
-            print len(i)
+            print(len(i))
         f.close()
-        
+
         m = Markov()
         f = open('wahoo_fixed.txt', 'r')
         for line in f.read().split('\n'):
             m.add_string(line)
             #print line
-        print m.get_string(['Wahoo'])
+        print(m.get_string(['Wahoo']))
         m.save('markov_new.botdat')
 
 def reimport():

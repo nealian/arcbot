@@ -25,9 +25,9 @@ def load_markov(name):
         print(' Loaded markov dictionary with {} phrases.'.format(len(dict)))
         return dict
     except:
-        print ' Could not load file {}.'.format(name)
+        print(' Could not load file {}.'.format(name))
         return {}
-        
+
 
 def save_markov(data, name):
     f = open(name, 'w')
@@ -46,7 +46,7 @@ def save_markov(data, name):
 @contextmanager
 def time_limit(seconds):
     def signal_handler(signum, frame):
-        raise TimeoutException, "Timed out!"
+        raise TimeoutException("Timed out!")
     signal.signal(signal.SIGALRM, signal_handler)
     signal.alarm(seconds)
     try:
